@@ -18,7 +18,7 @@ app.use(function(request, response, next) {
 
 var io = require('socket.io')(http);
 // io.path('/getData')
-var port = 8000;
+var port = process.env.PORT || 5000;
 
 // app.get('/getData', function(req,res){
 //   console.log("get data response");
