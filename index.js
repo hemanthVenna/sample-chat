@@ -20,10 +20,10 @@ var io = require('socket.io')(http);
 // io.path('/getData')
 var port = process.env.PORT || 5000;
 
-// app.get('/getData', function(req,res){
-//   console.log("get data response");
-//   res.send('you are in getDAta');
-// })
+app.get('/getData', function(req,res){
+  console.log("get data response");
+  res.send('you are in getDAta');
+})
 
 
 // app.get('/getData', function(req,res){
@@ -34,16 +34,15 @@ var port = process.env.PORT || 5000;
 // });
 // });
 app.get('/', function(req, res){
-  console.log('hello world');
-  res.send("success")
-  // res.sendFile(__dirname + '/views/index.html');
+  console.log('req. comes')
+  res.sendFile(__dirname + '/views/index.html');
 });
 
-// io.on('connection', function(socket){
-//   socket.on('chat message', function(msg){
-//     io.emit('chat message', msg);
-//   });
-// });
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
 
 http.listen(port, function(){
   console.log('listening on *:' + port);
