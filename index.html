@@ -24,7 +24,7 @@
     <script>
       $(function () {
         // var socket = io('https://pwa-react-ddc13.firebaseapp.com');
-        var socket = io('http://localhost:8000');
+        var socket = io('https://boiling-cove-13790.herokuapp.com/');
         $('form').submit(function(){
           socket.emit('chat message', $('#m').val());
           $('#m').val('');
