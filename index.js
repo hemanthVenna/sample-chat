@@ -3,7 +3,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 
 app.use(function (req, res, next) {
-    var allowedOrigins = ['https://calm-meadow-51226.herokuapp.com/'];
+    var allowedOrigins = ['https://calm-meadow-51226.herokuapp.com/','http://localhost:5000/'];
     var origin = req.headers.origin;
     if (allowedOrigins.indexOf(origin) > -1) {
         res.setHeader('Access-Control-Allow-Origin', origin);
@@ -12,16 +12,22 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Credentials", "true");
     next();
 });
-var cors = require('cors');    
-app.use(cors({credentials: true, origin: 'https://calm-meadow-51226.herokuapp.com/'}));
+// var cors = require('cors');    
+// app.use(cors({credentials: true, origin: 'https://calm-meadow-51226.herokuapp.com/'}));
 
-app.all('*', function(req, res, next) {
-       res.header("Access-Control-Allow-Origin", "*");
-       res.header("Access-Control-Allow-Headers", "X-Requested-With");
-       res.header('Access-Control-Allow-Headers', 'Content-Type');
-       next();
-});
+// app.all('*', function(req, res, next) {
+//        res.header("Access-Control-Allow-Origin", "*");
+//        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//        res.header('Access-Control-Allow-Headers', 'Content-Type');
+//        next();
+// });
 
+
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 var io = require('socket.io')(http,{
   path: '/getData',
