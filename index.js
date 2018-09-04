@@ -2,10 +2,15 @@ var app = require('express')();
 var cors = require('cors')
 var http = require('http').Server(app);
 
-app.use(function(request, response, next) {
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+app.use(function (req, res, next) {
+    var allowedOrigins = ['https://pwa-react-testapp.firebaseapp.com/'];
+    var origin = req.headers.origin;
+    if (allowedOrigins.indexOf(origin) > -1) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
 });
 // var io = require('socket.io')(http,{
 //   path: '/getData',
