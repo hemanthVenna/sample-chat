@@ -14,6 +14,15 @@ app.use(function (req, res, next) {
 });
 var cors = require('cors');    
 app.use(cors({credentials: true, origin: 'https://calm-meadow-51226.herokuapp.com/'}));
+
+app.all('*', function(req, res, next) {
+       res.header("Access-Control-Allow-Origin", "*");
+       res.header("Access-Control-Allow-Headers", "X-Requested-With");
+       res.header('Access-Control-Allow-Headers', 'Content-Type');
+       next();
+});
+
+
 var io = require('socket.io')(http,{
   path: '/getData',
   serveClient: false,
