@@ -3,7 +3,7 @@ var cors = require('cors')
 var http = require('http').Server(app);
 
 app.use(function (req, res, next) {
-    var allowedOrigins = ['https://pwa-react-testapp.firebaseapp.com/'];
+    var allowedOrigins = ['https://calm-meadow-51226.herokuapp.com/'];
     var origin = req.headers.origin;
     if (allowedOrigins.indexOf(origin) > -1) {
         res.setHeader('Access-Control-Allow-Origin', origin);
