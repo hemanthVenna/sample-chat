@@ -2,6 +2,9 @@ var app = require('express')();
 // var cors = require('cors')
 var http = require('http').Server(app);
 
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+
 app.use(function (req, res, next) {
     var allowedOrigins = ['https://calm-meadow-51226.herokuapp.com/','http://localhost:5000/','http://127.0.1.1:5000/'];
     var origin = req.headers.origin;
