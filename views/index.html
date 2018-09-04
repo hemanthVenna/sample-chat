@@ -23,7 +23,7 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function () {
-        var socket = io('https://boiling-cove-13790.herokuapp.com/',
+        var socket = io('https://boiling-cove-13790.herokuapp.com/',{
                       path: '/getData'
                      });
         $('form').submit(function(){
