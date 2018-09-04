@@ -3,7 +3,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 
 app.use(function (req, res, next) {
-    var allowedOrigins = ['https://calm-meadow-51226.herokuapp.com/','http://localhost:5000/'];
+    var allowedOrigins = ['https://calm-meadow-51226.herokuapp.com/','http://localhost:5000/','http://127.0.1.1:5000/'];
     var origin = req.headers.origin;
     if (allowedOrigins.indexOf(origin) > -1) {
         res.setHeader('Access-Control-Allow-Origin', origin);
