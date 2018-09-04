@@ -12,6 +12,8 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Credentials", "true");
     next();
 });
+var cors = require('cors');    
+app.use(cors({credentials: true, origin: 'https://calm-meadow-51226.herokuapp.com/'}));
 var io = require('socket.io')(http,{
   path: '/getData',
   serveClient: false,
